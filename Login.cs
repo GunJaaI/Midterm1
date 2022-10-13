@@ -7,9 +7,7 @@ public class Login {
         this.loginEmail = loginEmail;
         this.loginpassword = loginpassword;
     }
-    public Login(Person[] persons) {
-        this.persons = persons;
-    }
+    
     
     public Person GetLoginEmail(string email){
         foreach (Person person2 in persons){
