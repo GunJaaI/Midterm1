@@ -25,7 +25,7 @@ public class Login {
             string email = search.GetEmail();
             string password = search.GetPassword();
 
-            if (person.GetEmail().Equals(email)){
+            if (person.GetEmail().Equals(email)&&person.GetPassword().Equals(password)){
                 return person;
             }
         }

@@ -9,15 +9,14 @@ public class Person {
     private string password;
 
     public Person(string namePrefix,string name,string surname
-    ,string age,string allergic,string religion,string email,string password) {
+    ,string age,string allergic,string religion) {
         this.namePrefix = namePrefix;
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.allergic = allergic;
         this.religion = religion;
-        this.email = email;
-        this.password = password;
+        
 
     }
 

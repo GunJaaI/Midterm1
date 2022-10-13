@@ -4,8 +4,8 @@ public class Student : Person {
     public Student(string namePrefix,string name,string surname,string age
     ,string grade
     ,string allergic,string religion
-    ,string school,string email,string password)
-    : base(namePrefix,name,surname,age,allergic,religion,email,password) {
+    ,string school)
+    : base(namePrefix,name,surname,age,allergic,religion) {
         this.grade = grade;
         this.school = school;
     }

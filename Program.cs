@@ -150,8 +150,7 @@ class Program
                                       InputAge(),
                                       InputAllergic(),
                                       CheckReligion(InputReligion()),
-                                      CheckEmail(InputEmail()),
-                                      InputPassword());
+                                      InputAdmin());
             Program.personList.AddNewPerson(currentStudent);
         }
 
@@ -203,14 +202,29 @@ class Program
         return Console.ReadLine();
     }
 
+    static string InputAdmin() {
+        Console.Write("Admin? (y/n) : ");
+        string checkadmin = Console.ReadLine();
+        if((checkadmin == "Yes")||(checkadmin == "yes")||(checkadmin == "Y")||(checkadmin == "y")) {
+            CheckEmail(InputEmail());
+            InputPassword();
+        } else if((checkadmin == "No")||(checkadmin == "no")||(checkadmin == "N")||(checkadmin == "n")) {
+            return null;
+        } else {
+            Console.WriteLine("Please input again");
+            Console.ReadLine();
+            return InputAdmin();
+        }
+        return null;
+    }
     static string InputEmail() {
-        Console.Write("Email : ");
-        return Console.ReadLine();
+            Console.Write("Email : ");
+            return Console.ReadLine();
     }
 
     static string InputPassword() {
-        Console.Write("Password : ");
-        return Console.ReadLine();
+            Console.Write("Password : ");
+            return Console.ReadLine();
     }
 
     static string CheckNamePrefix(string namePrefix){
@@ -249,9 +263,7 @@ class Program
                                       InputAge(),
                                       InputAllergic(),
                                       CheckReligion(InputReligion()),
-                                      InputSchool(),
-                                      CheckEmail(InputEmail()),
-                                      InputPassword());
+                                      InputSchool());
             Program.personList.AddNewPerson(student);
         }
 
@@ -288,8 +300,8 @@ class Program
                                       InputAge(),
                                       InputAllergic(),
                                       CheckReligion(InputReligion()),
-                                      CheckEmail(InputEmail()),
-                                      InputPassword());
+                                      InputCarRegis(),
+                                      InputAdmin());
             Program.personList.AddNewPerson(teacher);
         }
 
@@ -299,6 +311,11 @@ class Program
     static string InputRank() {
         Console.WriteLine("Rank ( Dean / Head of department / Full-time teacher )");
         Console.Write("Rank : ");
+        return Console.ReadLine();
+    }
+
+    static string InputCarRegis(){
+        Console.Write("Car number : ");
         return Console.ReadLine();
     }
 
@@ -318,10 +335,8 @@ class Program
         Console.Clear();
         Console.WriteLine("   Log-in   ");
         Console.WriteLine("************");
-        /*PersonList per = new PersonList(this.personList);*/
-        Login login = new Login(CheckLoginEmail(InputLoginEmail()),/*CheckEmail(InputEmail()),*/
-                                InputLoginPassword()/*InputPassword()*/);
-        //Person search = per.Search(login); 
+        Login login = new Login(CheckLoginEmail(InputLoginEmail()),
+                                InputLoginPassword());
         Console.Clear();
         PrintListMenu2();
     }
@@ -335,27 +350,26 @@ class Program
         Console.Write("Password : ");
         return Console.ReadLine();
     }
-    string checkEmail = InputEmail();
-    static string CheckLoginEmail(string loginEmail/*,string checkEmail*/){
+    static string CheckLoginEmail(string loginEmail/*,string email*/){
         if ((loginEmail == "exit")) {
             Console.Clear();
             BackToMainMenu();
-        } 
+        }
         /*
-        else if (loginEmail != checkEmail) {
+        else if (loginEmail != email) {
             Console.WriteLine("Incorrect email or password. Please try again.");
             BackToLoginScreen();
         }
         */
-        return loginEmail;
+        return null;
     }
     /*
-    static string CheckLoginPassword(string loginPassword,string getEmail){
-        if ((loginPassword != person.GetEmail())) {
+    static string CheckLoginPassword(string loginPassword){
+        if ((loginPassword != this.password)) {
             Console.WriteLine("Incorrect email or password. Please try again.");
             BackToLoginScreen();
         }
-        return loginPassword;
+        return null;
     }
     */
     static void BackToLoginScreen() {
