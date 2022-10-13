@@ -92,10 +92,10 @@ class Program
     }
 
     static void ShowAllStudentsParticipating() {
-        Console.WriteLine("Show all Current Students participating");
-        Console.WriteLine("***************************************");
+        Console.WriteLine("Show all Students participating");
+        Console.WriteLine("*******************************");
 
-        Program.personList.CurrentStudentList();
+        Program.personList.StudentList();
 
         Console.Write("Press enter to continue. : ");
         Console.ReadLine();
@@ -103,10 +103,10 @@ class Program
     }
 
     static void ShowAllTeachersParticipating() {
-        Console.WriteLine("Show all Current Students participating");
-        Console.WriteLine("***************************************");
+        Console.WriteLine("Show all Teachers participating");
+        Console.WriteLine("*******************************");
 
-        Program.personList.CurrentStudentList();
+        Program.personList.TeacherList();
 
         Console.Write("Press enter to continue. : ");
         Console.ReadLine();
@@ -157,7 +157,14 @@ class Program
 
         BackToMainMenu();
     }
+    /*
+    static void CheckName(){
+        PersonList inventory = new PersonList(personList);
+        Person checkperson = new Person(InputNamePrefix(),InputName(),InputSurname(),"","","","","");
+        Person searchName = inventory.SearchName(checkperson);
 
+    }
+    */
     static void PreparePersonListProgramIsLoad() {
         Program.personList = new PersonList();
     }
@@ -222,7 +229,9 @@ class Program
 
     static string CheckEmail(string email){
         if ((email == "exit")) {
-            throw new Exception("Invalid email. Please try again.");
+            Console.Write("Invalid email. Please try again.");
+            Console.ReadLine();
+            BackToMainMenu();
         }
         return email;
     }
@@ -309,8 +318,10 @@ class Program
         Console.Clear();
         Console.WriteLine("   Log-in   ");
         Console.WriteLine("************");
-        Login login = new Login(CheckLoginEmail(InputLoginEmail()/*,InputEmail()*/),
-                                InputLoginPassword()/*CheckLoginPassword(InputLoginPassword())*/);
+        /*PersonList per = new PersonList(this.personList);*/
+        Login login = new Login(CheckLoginEmail(InputLoginEmail()),/*CheckEmail(InputEmail()),*/
+                                InputLoginPassword()/*InputPassword()*/);
+        //Person search = per.Search(login); 
         Console.Clear();
         PrintListMenu2();
     }
@@ -356,13 +367,4 @@ class Program
         Console.Clear();
         PrintListMenu2();
     }
-
-    /*
-    static string Check1(string namePrefix,string name,string surname){
-        if (InputName() ) {
-            return rank;
-        }
-        throw new Exception("Please input Grade 10 - 12");
-    }
-    */
 }

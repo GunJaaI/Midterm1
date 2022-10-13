@@ -17,9 +17,3 @@ public enum Menu2 {
     ShowAllTeachersParticipating,
     Logout
 }
-
-class MenuControl {
-
-
-
-}
